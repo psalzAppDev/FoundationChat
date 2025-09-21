@@ -9,11 +9,13 @@
 /* Begin PBXBuildFile section */
 		D094F4972E80AC6A00612B5F /* AppIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = D094F4962E80AC6A00612B5F /* AppIcon.icon */; };
 		D094F49E2E80ACBC00612B5F /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = D094F49D2E80ACBC00612B5F /* SwiftSoup */; };
+		D094F4C72E80AD8500612B5F /* License Info.md in Resources */ = {isa = PBXBuildFile; fileRef = D094F4C62E80AD8500612B5F /* License Info.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		D094F4882E80AC0D00612B5F /* FoundationChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoundationChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D094F4962E80AC6A00612B5F /* AppIcon.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = AppIcon.icon; sourceTree = "<group>"; };
+		D094F4C62E80AD8500612B5F /* License Info.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "License Info.md"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -39,6 +41,7 @@
 		D094F47F2E80AC0D00612B5F = {
 			isa = PBXGroup;
 			children = (
+				D094F4C62E80AD8500612B5F /* License Info.md */,
 				D094F48A2E80AC0D00612B5F /* FoundationChat */,
 				D094F4892E80AC0D00612B5F /* Products */,
 				D094F4962E80AC6A00612B5F /* AppIcon.icon */,
@@ -121,6 +124,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D094F4C72E80AD8500612B5F /* License Info.md in Resources */,
 				D094F4972E80AC6A00612B5F /* AppIcon.icon in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
