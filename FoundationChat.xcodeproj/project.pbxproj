@@ -6,8 +6,14 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		D094F4972E80AC6A00612B5F /* AppIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = D094F4962E80AC6A00612B5F /* AppIcon.icon */; };
+		D094F49E2E80ACBC00612B5F /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = D094F49D2E80ACBC00612B5F /* SwiftSoup */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		D094F4882E80AC0D00612B5F /* FoundationChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoundationChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D094F4962E80AC6A00612B5F /* AppIcon.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = AppIcon.icon; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -23,6 +29,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D094F49E2E80ACBC00612B5F /* SwiftSoup in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -34,6 +41,7 @@
 			children = (
 				D094F48A2E80AC0D00612B5F /* FoundationChat */,
 				D094F4892E80AC0D00612B5F /* Products */,
+				D094F4962E80AC6A00612B5F /* AppIcon.icon */,
 			);
 			sourceTree = "<group>";
 		};
@@ -65,6 +73,7 @@
 			);
 			name = FoundationChat;
 			packageProductDependencies = (
+				D094F49D2E80ACBC00612B5F /* SwiftSoup */,
 			);
 			productName = FoundationChat;
 			productReference = D094F4882E80AC0D00612B5F /* FoundationChat.app */;
@@ -94,6 +103,9 @@
 			);
 			mainGroup = D094F47F2E80AC0D00612B5F;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				D094F49C2E80ACBC00612B5F /* XCRemoteSwiftPackageReference "SwiftSoup" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = D094F4892E80AC0D00612B5F /* Products */;
 			projectDirPath = "";
@@ -109,6 +121,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D094F4972E80AC6A00612B5F /* AppIcon.icon in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,7 +281,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 15.6;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.petersalz.FoundationChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
@@ -312,7 +325,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 15.6;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.petersalz.FoundationChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
@@ -351,6 +364,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D094F49C2E80ACBC00612B5F /* XCRemoteSwiftPackageReference "SwiftSoup" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scinfu/SwiftSoup";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.11.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D094F49D2E80ACBC00612B5F /* SwiftSoup */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D094F49C2E80ACBC00612B5F /* XCRemoteSwiftPackageReference "SwiftSoup" */;
+			productName = SwiftSoup;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D094F4802E80AC0D00612B5F /* Project object */;
 }
