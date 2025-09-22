@@ -33,7 +33,46 @@ struct ConversationDetailView: View {
     var isInputFocused: Bool
 
     var body: some View {
-        #warning("Implement me")
+
+        ScrollView {
+
+            LazyVStack {
+                ForEach(conversation.sortedMessage) { message in
+                    MessageView(message: message)
+                        .id(message.id)
+                }
+            }
+            .scrollTargetLayout()
+            .padding(.bottom, 50)
+        }
+        .onAppear {
+
+            chatEngine.prewarm()
+
+            isInputFocused = true
+
+            withAnimation {
+                scrollPosition.scrollTo(edge: .bottom)
+            }
+        }
+        .scrollDismissesKeyboard(.interactively)
+        .scrollPosition($scrollPosition, anchor: .bottom)
+        .navigationTitle("Messages")
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbarRole(.editor)
+        .toolbar {
+            ConversationDetailInputView(
+                newMessage: $newMessage,
+                isGenerating: $isGenerating,
+                isInputFocused: $isInputFocused,
+                onSend: {
+                    isGenerating = true
+                    await streamNewMessage()
+                    await updateConversationSummary()
+                    isGenerating = false
+                }
+            )
+        }
     }
 }
 
@@ -41,12 +80,66 @@ extension ConversationDetailView {
 
     private func streamNewMessage() async {
 
-        #warning("Implement me")
+        conversation.messages.append(
+            Message(
+                content: newMessage,
+                role: .user,
+                timestamp: .now
+            )
+        )
+
+        try? modelContext.save()
+
+        newMessage = ""
+
+        withAnimation {
+            scrollPosition.scrollTo(edge: .bottom)
+        }
+
+        if let stream = await chatEngine.respondTo() {
+
+            let newMessage = Message(
+                content: "...",
+                role: .assistant,
+                timestamp: .now
+            )
+
+            conversation.messages.append(newMessage)
+
+            do {
+                for try await part in stream {
+
+                    newMessage.content = part.content.content ?? ""
+                    newMessage.attachmentTitle = part.content.metdata?.title
+                    newMessage.attachmentThumbnail = part.content.metdata?.thumbnail
+                    newMessage.attachmentDescription = part.content.metdata?.description
+
+                    scrollPosition.scrollTo(edge: .bottom)
+                }
+
+                try modelContext.save()
+
+            } catch {
+                newMessage.content = "Error: \(error.localizedDescription)"
+            }
+        }
     }
 
     private func updateConversationSummary() async {
 
-        #warning("Implement me")
+        if let stream = await chatEngine.summarize() {
+
+            do {
+                for try await part in stream {
+                    conversation.summary = part.content
+                }
+
+                try modelContext.save()
+
+            } catch {
+                conversation.summary = "Error: \(error.localizedDescription)"
+            }
+        }
     }
 }
 

@@ -17,11 +17,11 @@ class Conversation {
     var summary: String?
 
     var lastMessageTimestamp: Date {
-        #warning("Implement me")
+        messages.last?.timestamp ?? .now
     }
 
     var sortedMessage: [Message] {
-        #warning("Implement me")
+        messages.sorted(by: { $0.timestamp < $1.timestamp })
     }
 
     init(messages: [Message], summary: String?) {

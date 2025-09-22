@@ -20,7 +20,28 @@ struct ConversationDetailInputView: ToolbarContent {
     var onSend: () async throws -> Void
 
     var body: some ToolbarContent {
-        #warning("Implement me")
+
+        ToolbarItemGroup(placement: .bottomBar) {
+
+            TextField("New message to the assistant", text: $newMessage)
+                .textFieldStyle(.plain)
+                .padding()
+                .contentShape(.rect)
+                .focused(isInputFocused)
+
+            Button(
+                action: {
+                    Task {
+                        try? await onSend()
+                    }
+                },
+                label: {
+                    Label("Send", systemImage: "paperplane")
+                }
+            )
+            .disabled(isGenerating)
+            .tint(isGenerating ? .gray : .blue)
+        }
     }
 }
 

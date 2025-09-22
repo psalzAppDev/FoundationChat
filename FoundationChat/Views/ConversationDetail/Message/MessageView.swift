@@ -12,7 +12,30 @@ struct MessageView: View {
     let message: Message
 
     var body: some View {
-        #warning("Implement me")
+
+        HStack {
+
+            if message.role == .user {
+                Spacer()
+            }
+
+            VStack(alignment: .leading) {
+
+                MessageContentView(message: message)
+                MessageAttachmentView(message: message)
+            }
+            .padding()
+            .glassEffect(
+                .regular.tint(message.role == .user ? .blue : .green),
+                in: .rect(cornerRadius: 16)
+            )
+            .padding(.horizontal)
+            .animation(.bouncy, value: message.content)
+
+            if message.role == .assistant {
+                Spacer()
+            }
+        }
     }
 }
 
